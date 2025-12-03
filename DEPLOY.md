@@ -41,20 +41,57 @@ Antes do primeiro deploy, você precisa:
 1. Criar um banco de dados MySQL
 2. Executar as migrações localmente ou via Vercel CLI
 
-**Opção A: Usar PlanetScale (Recomendado)**
+**Opção A: Usar Aiven for MySQL (Recomendado - Gratuito)**
 
-PlanetScale oferece MySQL serverless gratuitamente:
+Aiven oferece MySQL gratuito com 300MB de armazenamento:
 
-1. Crie uma conta em https://planetscale.com
-2. Crie um novo banco de dados
-3. Copie a string de conexão
-4. Cole em `DATABASE_URL` nas variáveis de ambiente da Vercel
+1. Acesse https://aiven.io
+2. Crie uma conta gratuita
+3. Clique em "Create Service"
+4. Selecione "MySQL"
+5. Escolha o plano gratuito (300MB)
+6. Selecione a região mais próxima
+7. Copie a string de conexão em "Connection String"
+8. Cole em `DATABASE_URL` nas variáveis de ambiente da Vercel
 
-**Opção B: Usar outro provedor MySQL**
+**Opção B: Usar Railway (Gratuito com limite)**
 
-- AWS RDS
-- DigitalOcean Managed Databases
-- Linode Managed Database
+Railway oferece $5 de crédito gratuito por mês:
+
+1. Acesse https://railway.app
+2. Faça login com GitHub
+3. Clique em "New Project"
+4. Selecione "Provision MySQL"
+5. Copie a string de conexão
+6. Cole em `DATABASE_URL` nas variáveis de ambiente da Vercel
+
+**Opção C: Usar Render (Gratuito com limite)**
+
+Render oferece banco de dados MySQL com limite gratuito:
+
+1. Acesse https://render.com
+2. Crie uma conta
+3. Clique em "New +"
+4. Selecione "MySQL"
+5. Configure o banco de dados
+6. Copie a connection string
+7. Cole em `DATABASE_URL` nas variáveis de ambiente da Vercel
+
+**Opção D: Usar Supabase (PostgreSQL - Alternativa)**
+
+Se preferir PostgreSQL em vez de MySQL:
+
+1. Acesse https://supabase.com
+2. Crie uma conta gratuita
+3. Crie um novo projeto
+4. Copie a connection string
+5. Atualize o `DATABASE_URL` e o Drizzle ORM para PostgreSQL
+
+**Opção E: Usar outro provedor MySQL pago**
+
+- AWS RDS (free tier limitado)
+- DigitalOcean Managed Databases (começando em $15/mês)
+- Linode Managed Database (começando em $15/mês)
 - Qualquer outro provedor MySQL
 
 #### 4. Deploy automático
@@ -157,5 +194,22 @@ Acesse em `http://localhost:5173`
 - [Documentação Vite](https://vitejs.dev)
 - [Documentação Express](https://expressjs.com)
 - [Documentação Drizzle ORM](https://orm.drizzle.team)
-- [PlanetScale](https://planetscale.com)
+- [Aiven for MySQL](https://aiven.io)
+- [Railway](https://railway.app)
+- [Render](https://render.com)
+- [Supabase](https://supabase.com)
+
+---
+
+## 💡 Comparação de Provedores Gratuitos
+
+| Provedor | Tipo | Limite Gratuito | Melhor Para |
+|----------|------|-----------------|-------------|
+| **Aiven** | MySQL | 300MB | Projetos pequenos e médios |
+| **Railway** | MySQL | $5/mês crédito | Testes e prototipagem |
+| **Render** | MySQL | Limitado | Desenvolvimento |
+| **Supabase** | PostgreSQL | 500MB | Alternativa com mais recursos |
+| **AWS RDS** | MySQL | 750h/mês (t2.micro) | Projetos maiores |
+
+**Recomendação**: Use **Aiven** para começar. É simples, confiável e oferece espaço suficiente para a maioria dos projetos iniciais.
 
